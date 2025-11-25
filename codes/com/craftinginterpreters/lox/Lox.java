@@ -47,7 +47,6 @@ public class Lox {
         if(hadError) System.exit(65);
     }
     
-    // --- エラー処理 ---
     
     static void error(int line, String message) {
         report(line, "", message);
