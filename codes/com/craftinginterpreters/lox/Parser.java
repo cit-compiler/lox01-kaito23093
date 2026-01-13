@@ -16,10 +16,8 @@ class Parser {
 
   Expr parse() {
     try {
-      // 現在は式(Expression)のみをパース
       Expr expr = expression();
       
-      // 式のパース後、終端に達していない場合はエラーとする (Statement実装前の暫定チェック)
       if (!isAtEnd()) {
           error(peek(), "Expect end of expression.");
       }
@@ -110,7 +108,6 @@ class Parser {
     throw error(peek(), "Expect expression.");
   }
   
-  // --- ユーティリティメソッド ---
 
   private boolean match(TokenType... types) {
     for (TokenType type : types) {
@@ -149,13 +146,11 @@ class Parser {
     return tokens.get(current - 1);
   }
 
-  // エラー報告と例外の発生
   private ParseError error(Token token, String message) {
     Lox.error(token, message);
     return new ParseError();  
   }
 
-  // パニックモード回復用の同期処理 (現在は未使用だが完全版として含める)
   private void synchronize() {
     advance();  
 

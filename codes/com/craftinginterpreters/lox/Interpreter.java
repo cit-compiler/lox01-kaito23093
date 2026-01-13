@@ -2,7 +2,6 @@ package com.craftinginterpreters.lox;
 
 class Interpreter implements Expr.Visitor<Object> {
   
-  // 窓口となるメソッド
   void interpret(Expr expression) { 
     try {
       Object value = evaluate(expression);
