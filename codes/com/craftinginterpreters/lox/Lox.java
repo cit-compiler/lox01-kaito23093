@@ -47,16 +47,15 @@ public class Lox {
     }
 
     private static void run(String source) {
-        Scanner scanner = new Scanner(source);
-        List<Token> tokens = scanner.scanTokens();
-        
-        Parser parser = new Parser(tokens);
-        Expr expression = parser.parse();
+    Scanner scanner = new Scanner(source);
+    List<Token> tokens = scanner.scanTokens();
+    Parser parser = new Parser(tokens);
+    Expr expression = parser.parse();
 
-        if (hadError) return;
-        
-        interpreter.interpret(expression);
-    }
+    if (hadError) return;
+
+    interpreter.interpret(expression);
+  }
 
     static void runtimeError(RuntimeError error) {
         System.err.println(error.getMessage() +

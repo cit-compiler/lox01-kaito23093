@@ -2,6 +2,7 @@ package com.craftinginterpreters.lox;
 
 class Interpreter implements Expr.Visitor<Object> {
   
+  // 窓口となるメソッド
   void interpret(Expr expression) { 
     try {
       Object value = evaluate(expression);
@@ -45,7 +46,6 @@ class Interpreter implements Expr.Visitor<Object> {
     Object right = evaluate(expr.right); 
     
     switch (expr.operator.type) {
-  
       case GREATER:
         checkNumberOperands(expr.operator, left, right);
         return (double)left > (double)right;
